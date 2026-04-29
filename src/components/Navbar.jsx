@@ -7,6 +7,7 @@ function Navbar() {
       <Link to="/carrito" style={{ color: 'white', textDecoration: 'none' }}>Carrito</Link>
       <Link to="/mis-pedidos" style={{ color: 'white', textDecoration: 'none' }}>Mis Pedidos</Link>
       <Link to="/notificaciones" style={{ color: 'white', textDecoration: 'none' }}>Notificaciones</Link>
+      <Link to="/catalogo-productos" style={{ color: 'white', textDecoration: 'none' }}>Catálogo de Productos</Link>
       <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
     </nav>
   )
