@@ -2,6 +2,17 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles/CatalogoProductos.css'
 
+// Importar imágenes locales de perfumes
+import amphora from '../assets/perfumes/amphora.webp'
+import savage from '../assets/perfumes/savage.webp'
+import arianaGrande from '../assets/perfumes/ariana-grande.webp'
+import aura from '../assets/perfumes/aura.webp'
+import bharara from '../assets/perfumes/bharara-king.webp'
+import hotBlossom from '../assets/perfumes/hot-blossom.webp'
+import hotSensation from '../assets/perfumes/hot-sensation.webp'
+import sublime from '../assets/perfumes/sublime.webp'
+import theIcon from '../assets/perfumes/the-icon.webp'
+
 const CatalogoProductos = () => {
   const navigate = useNavigate()
   const [productos, setProductos] = useState([])
@@ -13,41 +24,42 @@ const CatalogoProductos = () => {
   const [ordenamiento, setOrdenamiento] = useState('nombre')
   const [cargando, setCargando] = useState(true)
   const [carrito, setCarrito] = useState([])
+  const [vistaRapida, setVistaRapida] = useState(null)
 
   // Datos de ejemplo para perfumes premium
   const perfumesEjemplo = [
     {
       id: 1,
-      nombre: "Chanel N°5",
-      marca: "Chanel",
+      nombre: "amphora",
+      marca: "amphora",
       categoria: "femenino",
       precio: 125.99,
       descripcion: "Icono de la elegancia femenina con notas de jazmín y rosa",
-      imagen: "/images/chanel5.jpg",
+      imagen: amphora,
       stock: 15,
       calificacion: 4.8,
       descuento: 0
     },
     {
       id: 2,
-      nombre: "Sauvage Elixir",
+      nombre: "Savage Elixir",
       marca: "Dior",
       categoria: "masculino",
       precio: 189.99,
       descripcion: "Intensidad extrema con notas de lavanda y especias",
-      imagen: "/images/sauvage.jpg",
+      imagen: savage,
       stock: 8,
       calificacion: 4.9,
       descuento: 10
     },
     {
       id: 3,
-      nombre: "Black Orchid",
+      nombre: "arianaGrande",
       marca: "Tom Ford",
       categoria: "unisex",
       precio: 245.00,
       descripcion: "Lujo oscuro y misterioso con notas de orquídea negra",
-      imagen: "/images/blackorchid.jpg",
+      imagen: arianaGrande,
       stock: 12,
       calificacion: 4.7,
       descuento: 0
@@ -59,7 +71,7 @@ const CatalogoProductos = () => {
       categoria: "femenino",
       precio: 98.50,
       descripcion: "Felicidad en una botella con notas de iris y vainilla",
-      imagen: "/images/lavieestbelle.jpg",
+      imagen: aura,
       stock: 20,
       calificacion: 4.6,
       descuento: 15
@@ -71,7 +83,7 @@ const CatalogoProductos = () => {
       categoria: "masculino",
       precio: 156.00,
       descripcion: "Frescura woody con notas de cítricos y madera de cedro",
-      imagen: "/images/bleudechanel.jpg",
+      imagen: bharara,
       stock: 18,
       calificacion: 4.8,
       descuento: 0
@@ -83,7 +95,7 @@ const CatalogoProductos = () => {
       categoria: "femenino",
       precio: 112.00,
       descripcion: "Dulzura rebelde con notas de tuberosa y jazmín",
-      imagen: "/images/goodgirl.jpg",
+      imagen: hotBlossom,
       stock: 25,
       calificacion: 4.5,
       descuento: 20
@@ -95,7 +107,7 @@ const CatalogoProductos = () => {
       categoria: "masculino",
       precio: 89.99,
       descripcion: "Frescura marina con notas de bergamota y musgo",
-      imagen: "/images/accuadigio.jpg",
+      imagen: hotSensation,
       stock: 30,
       calificacion: 4.4,
       descuento: 5
@@ -107,7 +119,19 @@ const CatalogoProductos = () => {
       categoria: "femenino",
       precio: 134.99,
       descripcion: "Explosión floral con notas de orquídea y freesia",
-      imagen: "/images/flowerbomb.jpg",
+      imagen: sublime,
+      stock: 14,
+      calificacion: 4.7,
+      descuento: 0
+    },
+    {
+      id: 9,
+      nombre: "theIcon",
+      marca: "Viktor&Rolf",
+      categoria: "masculino",
+      precio: 134.99,
+      descripcion: "Explosión floral con notas de orquídea y freesia",
+      imagen: theIcon,
       stock: 14,
       calificacion: 4.7,
       descuento: 0
@@ -180,6 +204,14 @@ const CatalogoProductos = () => {
 
   const verDetalles = (producto) => {
     navigate(`/producto/${producto.id}`)
+  }
+
+  const abrirVistaRapida = (producto) => {
+    setVistaRapida(producto)
+  }
+
+  const cerrarVistaRapida = () => {
+    setVistaRapida(null)
   }
 
   const obtenerPrecioConDescuento = (producto) => {
@@ -319,7 +351,7 @@ const CatalogoProductos = () => {
                   alt={producto.nombre}
                   className="producto-imagen"
                   onError={(e) => {
-                    e.target.src = '/images/placeholder-perfume.jpg'
+                    e.target.src = placeholderImage
                   }}
                 />
                 {producto.descuento > 0 && (
@@ -328,7 +360,7 @@ const CatalogoProductos = () => {
                 <div className="producto-acciones">
                   <button
                     className="accion-btn vista-rapida-btn"
-                    onClick={() => verDetalles(producto)}
+                    onClick={() => abrirVistaRapida(producto)}
                     title="Vista rápida"
                   >
                     👁️
@@ -413,6 +445,52 @@ const CatalogoProductos = () => {
           </div>
         </div>
       </footer>
+
+      {/* Modal de Vista Rápida */}
+      {vistaRapida && (
+        <div className="vista-rapida-modal" onClick={cerrarVistaRapida}>
+          <div className="vista-rapida-content" onClick={(e) => e.stopPropagation()}>
+            <button className="vista-rapida-cerrar" onClick={cerrarVistaRapida}>
+              ✕
+            </button>
+            <div className="vista-rapida-imagen-container">
+              <img
+                src={vistaRapida.imagen}
+                alt={vistaRapida.nombre}
+                className="vista-rapida-imagen"
+              />
+            </div>
+            <div className="vista-rapida-info">
+              <h3>{vistaRapida.nombre}</h3>
+              <p className="vista-rapida-marca">{vistaRapida.marca}</p>
+              <p className="vista-rapida-descripcion">{vistaRapida.descripcion}</p>
+              <div className="vista-rapida-precio">
+                ${vistaRapida.precio.toFixed(2)}
+              </div>
+              <div className="vista-rapida-botones">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    agregarAlCarrito(vistaRapida)
+                    cerrarVistaRapida()
+                  }}
+                >
+                  Agregar al Carrito
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    verDetalles(vistaRapida)
+                    cerrarVistaRapida()
+                  }}
+                >
+                  Ver Detalles
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
