@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { register } from '../services/usuariosService'
 
 function Registro() {
   const [nombre, setNombre] = useState('')
@@ -8,15 +9,22 @@ function Registro() {
   const [rol, setRol] = useState('CLIENTE')
   const navigate = useNavigate()
 
-  const handleRegistro = () => {
-    const formData = {
-      nombre: nombre,
-      email: email,
-      password: password,
-      rol: rol
+  const handleRegistro = async (e) => {
+    e.preventDefault()
+    try {
+      const formData = {
+        nombre: nombre,
+        email: email,
+        password: password,
+        rol: rol
+      }
+      console.log('Registro:', formData)
+      await register(formData)
+      console.log('Usuario registrado exitosamente')
+      navigate('/login')
+    } catch (error) {
+      console.error('Error en registro:', error)
     }
-    console.log('Registro:', formData)
-    navigate('/login')
   }
 
   return (
