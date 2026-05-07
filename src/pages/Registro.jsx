@@ -5,10 +5,17 @@ function Registro() {
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [rol, setRol] = useState('CLIENTE')
   const navigate = useNavigate()
 
   const handleRegistro = () => {
-    console.log('Registro:', nombre, email, password)
+    const formData = {
+      nombre: nombre,
+      email: email,
+      password: password,
+      rol: rol
+    }
+    console.log('Registro:', formData)
     navigate('/login')
   }
 
@@ -23,6 +30,14 @@ function Registro() {
           onChange={e => setNombre(e.target.value)}
           style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
         />
+        <select
+          value={rol}
+          onChange={e => setRol(e.target.value)}
+          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        >
+          <option value="CLIENTE">CLIENTE</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
         <input
           type="email"
           placeholder="Email"
