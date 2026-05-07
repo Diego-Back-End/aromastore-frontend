@@ -1,14 +1,32 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { login } from '../services/usuariosService'
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  const handleLogin = () => {
-    console.log('Login:', email, password)
-    navigate('/')
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    try {
+      const credentials = {
+        email: email,
+        password: password
+      }
+      const response = await login(credentials)
+      console.log('Login exitoso:', response)
+      
+      // Guardar token en localStorage
+      if (response.token) {
+        localStorage.setItem('token', response.token)
+      }
+      
+      // Redirigir a /catalogo
+      navigate('/catalogo')
+    } catch (error) {
+      console.error('Error en login:', error)
+    }
   }
 
   return (
