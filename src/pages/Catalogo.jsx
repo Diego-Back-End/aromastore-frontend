@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getProductos } from '../services/productosService'
 
 function Catalogo() {
   const [productos, setProductos] = useState([])
   const navigate = useNavigate()
 
-  // Datos de prueba hasta que el MS esté listo
+  // Obtener productos del backend
   useEffect(() => {
-    setProductos([
-      { id: 1, nombre: 'Perfume Noir', precio: 29990, descripcion: 'Fragancia oscura y elegante' },
-      { id: 2, nombre: 'Acqua Fresh', precio: 19990, descripcion: 'Fresco y ligero' },
-      { id: 3, nombre: 'Rose Gold', precio: 34990, descripcion: 'Floral con toques dulces' },
-    ])
+    const fetchProductos = async () => {
+      try {
+        const datos = await getProductos()
+        setProductos(datos)
+      } catch (error) {
+        console.error('Error al obtener productos:', error)
+      }
+    }
+    fetchProductos()
   }, [])
 
   return (
