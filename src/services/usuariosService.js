@@ -14,7 +14,7 @@ export const login = async (credentials) => {
 // Registrar nuevo usuario
 export const register = async (userData) => {
   try {
-    const response = await api.post('/api/usuarios/register', userData);
+    const response = await api.post('/api/usuarios', userData);
     return response.data;
   } catch (error) {
     console.error('Error en registro:', error);
@@ -25,7 +25,7 @@ export const register = async (userData) => {
 // Obtener perfil del usuario actual
 export const getProfile = async () => {
   try {
-    const response = await api.get('/api/usuarios/profile');
+    const response = await api.get('/api/usuarios');
     return response.data;
   } catch (error) {
     console.error('Error al obtener perfil:', error);
@@ -36,7 +36,7 @@ export const getProfile = async () => {
 // Actualizar perfil del usuario
 export const updateProfile = async (userData) => {
   try {
-    const response = await api.put('/api/usuarios/profile', userData);
+    const response = await api.put('/api/usuarios', userData);
     return response.data;
   } catch (error) {
     console.error('Error al actualizar perfil:', error);
@@ -105,7 +105,7 @@ export const logout = async () => {
 // Eliminar cuenta de usuario
 export const deleteAccount = async () => {
   try {
-    const response = await api.delete('/api/usuarios/account');
+    const response = await api.delete('/api/usuarios');
     return response.data;
   } catch (error) {
     console.error('Error al eliminar cuenta:', error);
