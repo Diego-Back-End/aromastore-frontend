@@ -26,7 +26,7 @@ function Checkout() {
           value={direccion}
           onChange={e => setDireccion(e.target.value)}
           style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
-        />
+        />f
         <input
           type="text"
           placeholder="Ciudad"
