@@ -28,42 +28,57 @@ function Registro() {
   }
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '400px', margin: '0 auto', backgroundColor: '#0a0a0a', minHeight: '100vh' }}>
-      <h1 style={{ color: '#ffffff', marginBottom: '2rem' }}>Crear Cuenta</h1>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <input
-          type="text"
-          placeholder="Nombre completo"
-          value={nombre}
-          onChange={e => setNombre(e.target.value)}
-          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
-        />
-        <select
-          value={rol}
-          onChange={e => setRol(e.target.value)}
-          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
-        >
-          <option value="CLIENTE">CLIENTE</option>
-          <option value="ADMIN">ADMIN</option>
-        </select>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
-        />
-        <button onClick={handleRegistro} style={{ padding: '0.5rem', borderRadius: '4px', backgroundColor: '#c9a84c', color: '#000000', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
-          Registrarse
-        </button>
-        <p style={{ color: '#aaaaaa' }}>¿Ya tienes cuenta? <Link to="/login" style={{ color: '#c9a84c' }}>Inicia sesión</Link></p>
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      minHeight: '100vh', 
+      backgroundColor: '#0a0a0a' 
+    }}>
+      <div style={{ 
+        width: '100%', 
+        maxWidth: '420px', 
+        padding: '2.5rem', 
+        backgroundColor: '#1a1a2e', 
+        borderRadius: '12px',
+        border: '1px solid #c9a84c'
+      }}>
+        <h1 style={{ color: '#ffffff', marginBottom: '2rem' }}>Crear Cuenta</h1>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <input
+            type="text"
+            placeholder="Nombre completo"
+            value={nombre}
+            onChange={e => setNombre(e.target.value)}
+            style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
+          />
+          <select
+            value={rol}
+            onChange={e => setRol(e.target.value)}
+            style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
+          >
+            <option value="CLIENTE">CLIENTE</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
+          />
+          <button onClick={handleRegistro} style={{ padding: '0.5rem', borderRadius: '4px', backgroundColor: '#c9a84c', color: '#000000', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
+            Registrarse
+          </button>
+          <p style={{ color: '#aaaaaa' }}>¿Ya tienes cuenta? <Link to="/login" style={{ color: '#c9a84c' }}>Inicia sesión</Link></p>
+        </div>
       </div>
     </div>
   )
