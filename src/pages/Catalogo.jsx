@@ -3,12 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { getProductos } from '../services/productosService'
 import '../styles/Catalogo.css'
 
-// Importar imágenes locales
-import heroImage from '../assets/perfumes/amphora.webp'
-import savage from '../assets/perfumes/savage.webp'
-import arianaGrande from '../assets/perfumes/ariana-grande.webp'
-import aura from '../assets/perfumes/aura.webp'
-
 function Catalogo() {
   const navigate = useNavigate()
   const [productosDestacados, setProductosDestacados] = useState([])
@@ -33,7 +27,6 @@ function Catalogo() {
         marca: 'AromaStore',
         precio: 299.90,
         descripcion: 'Fragancia oscura y elegante con notas de vainilla y ámbar',
-        imagen: heroImage,
         descuento: 0
       },
       {
@@ -42,7 +35,6 @@ function Catalogo() {
         marca: 'AromaStore',
         precio: 189.90,
         descripcion: 'Intensidad extrema con notas de lavanda y especias orientales',
-        imagen: savage,
         descuento: 15
       },
       {
@@ -51,7 +43,6 @@ function Catalogo() {
         marca: 'AromaStore',
         precio: 245.00,
         descripcion: 'Lujo floral con toques dorados y pétalos de rosa',
-        imagen: arianaGrande,
         descuento: 0
       },
       {
@@ -60,7 +51,6 @@ function Catalogo() {
         marca: 'AromaStore',
         precio: 156.50,
         descripcion: 'Frescura etérea con notas cítricas y musgo blanco',
-        imagen: aura,
         descuento: 20
       }
     ])
@@ -114,12 +104,9 @@ function Catalogo() {
             </div>
 
             <div className="hero-image-container">
-              <img
-                src={heroImage}
-                alt="Perfume Premium"
-                className="hero-image"
-              />
-
+              <div className="hero-image-placeholder">
+                <span className="placeholder-text">AromaStore</span>
+              </div>
               <div className="hero-image-glow"></div>
             </div>
           </div>
@@ -140,11 +127,17 @@ function Catalogo() {
           {productosDestacados.map((producto) => (
             <article key={producto.id} className="producto-card">
               <div className="producto-imagen-container">
-                <img
-                  src={producto.imagen}
-                  alt={producto.nombre}
-                  className="producto-imagen"
-                />
+                {producto.imagen ? (
+                  <img
+                    src={producto.imagen}
+                    alt={producto.nombre}
+                    className="producto-imagen"
+                  />
+                ) : (
+                  <div className="producto-imagen-placeholder">
+                    <span className="placeholder-text">{producto.nombre}</span>
+                  </div>
+                )}
 
                 {producto.descuento > 0 && (
                   <span className="descuento-badge">
