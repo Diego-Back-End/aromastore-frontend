@@ -7,6 +7,7 @@ function Registro() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rol, setRol] = useState('CLIENTE')
+  const [aceptaTerminos, setAceptaTerminos] = useState(false)
   const navigate = useNavigate()
 
   const handleRegistro = async (e) => {
@@ -74,7 +75,31 @@ function Registro() {
             onChange={e => setPassword(e.target.value)}
             style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #1a1a2e', backgroundColor: '#1a1a2e', color: '#ffffff' }}
           />
-          <button onClick={handleRegistro} style={{ padding: '0.5rem', borderRadius: '4px', backgroundColor: '#c9a84c', color: '#000000', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <input
+              type="checkbox"
+              id="terminos"
+              checked={aceptaTerminos}
+              onChange={e => setAceptaTerminos(e.target.checked)}
+              style={{ cursor: 'pointer', accentColor: '#c9a84c', width: '16px', height: '16px' }}
+            />
+            <label htmlFor="terminos" style={{ color: '#aaaaaa', fontSize: '0.9rem' }}>
+              Acepto los{' '}
+              <a href="/terminos" target="_blank" style={{ color: '#c9a84c' }}>
+                términos y condiciones
+              </a>
+            </label>
+          </div>
+          <button 
+            onClick={handleRegistro} 
+            disabled={!aceptaTerminos}
+            style={{ 
+              padding: '0.5rem', borderRadius: '4px', 
+              backgroundColor: aceptaTerminos ? '#c9a84c' : '#555555', 
+              color: '#000000', fontWeight: 'bold', border: 'none', 
+              cursor: aceptaTerminos ? 'pointer' : 'not-allowed' 
+            }}
+          >
             Registrarse
           </button>
           <p style={{ color: '#aaaaaa' }}>¿Ya tienes cuenta? <Link to="/login" style={{ color: '#c9a84c' }}>Inicia sesión</Link></p>
