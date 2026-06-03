@@ -19,7 +19,6 @@ function Navbar() {
       <Link to="/" style={{ ...linkStyle, fontSize: '1rem' }} onMouseEnter={(e) => e.target.style.color = linkHoverStyle.color} onMouseLeave={(e) => e.target.style.color = linkStyle.color}>Inicio</Link>
       <Link to="/carrito" style={{ ...linkStyle, fontSize: '1rem' }} onMouseEnter={(e) => e.target.style.color = linkHoverStyle.color} onMouseLeave={(e) => e.target.style.color = linkStyle.color}>Carrito</Link>
       <Link to="/mis-pedidos" style={{ ...linkStyle, fontSize: '1rem' }} onMouseEnter={(e) => e.target.style.color = linkHoverStyle.color} onMouseLeave={(e) => e.target.style.color = linkStyle.color}>Mis Pedidos</Link>
-      <Link to="/notificaciones" style={{ ...linkStyle, fontSize: '1rem' }} onMouseEnter={(e) => e.target.style.color = linkHoverStyle.color} onMouseLeave={(e) => e.target.style.color = linkStyle.color}>Notificaciones</Link>
       <Link to="/catalogo-productos" style={{ ...linkStyle, fontSize: '1rem' }} onMouseEnter={(e) => e.target.style.color = linkHoverStyle.color} onMouseLeave={(e) => e.target.style.color = linkStyle.color}>Catálogo de Productos</Link>
       <Link to="/login" style={{ ...linkStyle, fontSize: '1rem' }} onMouseEnter={(e) => e.target.style.color = linkHoverStyle.color} onMouseLeave={(e) => e.target.style.color = linkStyle.color}>Login</Link>
     </nav>
