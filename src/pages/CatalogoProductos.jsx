@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getProductos } from '../services/productosService'
-import '../styles/Catalogo.css'
+import '../styles/CatalogoProductos.css'
 
 function CatalogoProductos() {
   const navigate = useNavigate()
