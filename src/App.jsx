@@ -9,6 +9,7 @@ import Carrito from './pages/Carrito'
 import Checkout from './pages/Checkout'
 import MisPedidos from './pages/MisPedidos'
 import Notificaciones from './pages/Notificaciones'
+import Perfil from './pages/Perfil'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/mis-pedidos" element={<MisPedidos />} />
         <Route path="/notificaciones" element={<Notificaciones />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </BrowserRouter>
   )
