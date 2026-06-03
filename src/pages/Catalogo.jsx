@@ -67,6 +67,7 @@ function Catalogo() {
         <div className="footer-links">
           <a href="/catalogo-productos" className="footer-link">Catálogo</a>
           <a href="/contacto" className="footer-link">Contacto</a>
+          <a href="/terminos" className="footer-link">Términos y Condiciones</a>
         </div>
         <div className="footer-copyright">
           © 2026 AromaStore

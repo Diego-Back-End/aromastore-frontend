@@ -10,6 +10,7 @@ import Checkout from './pages/Checkout'
 import MisPedidos from './pages/MisPedidos'
 import Notificaciones from './pages/Notificaciones'
 import Perfil from './pages/Perfil'
+import Terminos from './pages/Terminos'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/mis-pedidos" element={<MisPedidos />} />
         <Route path="/notificaciones" element={<Notificaciones />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/terminos" element={<Terminos />} />
       </Routes>
     </BrowserRouter>
   )
