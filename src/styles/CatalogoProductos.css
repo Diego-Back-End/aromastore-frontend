@@ -75,6 +75,7 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+  align-items: stretch;
 }
 
 /* Card de producto */
@@ -84,6 +85,9 @@
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .producto-card:hover {
@@ -147,6 +151,9 @@
 /* Información del producto */
 .producto-info {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .producto-marca {
@@ -171,9 +178,7 @@
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  min-height: 3rem;
   overflow: hidden;
 }
 
@@ -221,6 +226,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   font-size: 1rem;
+  margin-top: auto;
 }
 
 .producto-btn:hover {
