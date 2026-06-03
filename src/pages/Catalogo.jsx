@@ -12,6 +12,12 @@ function Catalogo() {
     <div style={{ width: '100%' }}>
       {/* HERO SECTION */}
       <section className="hero-section">
+        <div style={{ position:'absolute', width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#c9a84c', top:'20%', left:'15%', animation:'float1 4s ease-in-out infinite' }}></div>
+        <div style={{ position:'absolute', width:'5px', height:'5px', borderRadius:'50%', backgroundColor:'#c9a84c', top:'60%', left:'25%', animation:'float2 6s ease-in-out infinite' }}></div>
+        <div style={{ position:'absolute', width:'10px', height:'10px', borderRadius:'50%', backgroundColor:'#c9a84c', top:'30%', right:'20%', animation:'float3 5s ease-in-out infinite' }}></div>
+        <div style={{ position:'absolute', width:'6px', height:'6px', borderRadius:'50%', backgroundColor:'#c9a84c', top:'70%', right:'30%', animation:'float1 7s ease-in-out infinite' }}></div>
+        <div style={{ position:'absolute', width:'4px', height:'4px', borderRadius:'50%', backgroundColor:'#c9a84c', top:'45%', left:'60%', animation:'float2 5s ease-in-out infinite' }}></div>
+        <div style={{ position:'absolute', width:'7px', height:'7px', borderRadius:'50%', backgroundColor:'#c9a84c', top:'80%', left:'45%', animation:'float3 8s ease-in-out infinite' }}></div>
         <div className="hero-content">
           <h1 className="hero-title">AromaStore</h1>
           <h2 className="hero-subtitle">Perfumes Premium de Lujo</h2>
@@ -21,9 +27,6 @@ function Catalogo() {
           <div className="hero-buttons">
             <button className="hero-btn-primary" onClick={irAlCatalogo}>
               Ver Catálogo
-            </button>
-            <button className="hero-btn-secondary" onClick={irAlCatalogo}>
-              Explorar Colección
             </button>
           </div>
         </div>
