@@ -32,7 +32,7 @@ function MisPedidos() {
   return (
     <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', padding: '2rem' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <h1 style={{ color: '#ffffff', marginBottom: '2rem' }}>📦 Mis Pedidos</h1>
+        <h1 style={{ color: '#ffffff', marginBottom: '2rem' }}> Mis Pedidos</h1>
 
         {cargando ? (
           <p style={{ color: '#aaaaaa' }}>Cargando pedidos...</p>

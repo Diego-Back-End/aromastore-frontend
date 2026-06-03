@@ -7,7 +7,7 @@ function Carrito() {
 
   return (
     <div style={{ backgroundColor: '#0a0a0a', minHeight: '100vh', padding: '2rem' }}>
-      <h1 style={{ color: '#ffffff', marginBottom: '2rem' }}>🛒 Mi Carrito</h1>
+      <h1 style={{ color: '#ffffff', marginBottom: '2rem' }}> Mi Carrito</h1>
       
       {items.length === 0 ? (
         <div style={{ textAlign: 'center', marginTop: '4rem' }}>
