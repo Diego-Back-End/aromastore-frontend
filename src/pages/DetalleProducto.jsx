@@ -54,9 +54,14 @@ function DetalleProducto() {
           backgroundColor: '#0d0d0d', height: '200px', 
           borderRadius: '8px', display: 'flex', 
           alignItems: 'center', justifyContent: 'center',
-          marginBottom: '1.5rem'
+          marginBottom: '1.5rem', padding: '1rem',
+          overflow: 'hidden'
         }}>
-          <span style={{ color: '#c9a84c', fontSize: '1.5rem', fontWeight: 'bold' }}>
+          <span style={{ 
+            color: '#c9a84c', fontSize: '1.2rem', 
+            fontWeight: 'bold', textAlign: 'center',
+            wordBreak: 'break-word', lineHeight: '1.4'
+          }}>
             {producto.nombre}
           </span>
         </div>
