@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Registro from './pages/Registro'
 import Catalogo from './pages/Catalogo'
+import CatalogoProductos from './pages/CatalogoProductos'
 import DetalleProducto from './pages/DetalleProducto'
 import Carrito from './pages/Carrito'
 import Checkout from './pages/Checkout'
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Catalogo />} />
+        <Route path="/catalogo-productos" element={<CatalogoProductos />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/producto/:id" element={<DetalleProducto />} />
