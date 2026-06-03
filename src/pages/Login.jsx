@@ -5,27 +5,25 @@ import { login } from '../services/usuariosService'
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-      const credentials = {
-        email: email,
-        password: password
-      }
-      const response = await login(credentials)
-      console.log('Login exitoso:', response)
-      
-      // Guardar token en localStorage
+      const response = await login({ email, password })
       if (response.token) {
         localStorage.setItem('token', response.token)
       }
-      
-      // Redirigir a /catalogo
-      navigate('/catalogo')
+      if (response.usuario) {
+        localStorage.setItem('usuarioId', response.usuario.id)
+        localStorage.setItem('usuarioNombre', response.usuario.nombre)
+        localStorage.setItem('usuarioEmail', response.usuario.email)
+        localStorage.setItem('usuarioRol', response.usuario.rol)
+      }
+      navigate('/perfil')
     } catch (error) {
-      console.error('Error en login:', error)
+      setError('Credenciales incorrectas')
     }
   }
 
@@ -64,6 +62,7 @@ function Login() {
           <button onClick={handleLogin} style={{ padding: '0.5rem', borderRadius: '4px', backgroundColor: '#c9a84c', color: '#000000', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
             Entrar
           </button>
+          {error && <p style={{ color: '#ff4444' }}>{error}</p>}
           <p style={{ color: '#aaaaaa' }}>¿No tienes cuenta? <Link to="/registro" style={{ color: '#c9a84c' }}>Regístrate</Link></p>
         </div>
       </div>
