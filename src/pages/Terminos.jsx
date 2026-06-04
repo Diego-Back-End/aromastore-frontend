@@ -11,7 +11,7 @@ function Terminos() {
         </button>
 
         <h1 style={{ color: '#c9a84c', marginBottom: '0.5rem' }}>Términos y Condiciones</h1>
-        <p style={{ color: '#aaaaaa', marginBottom: '2rem' }}>Última actualización: junio 2026</p>
+        <h1></h1>
 
         {[
           {
