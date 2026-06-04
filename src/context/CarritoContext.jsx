@@ -15,7 +15,7 @@ export const CarritoProvider = ({ children }) => {
             : item
         )
       }
-      return [...prev, { ...producto, cantidad: 1 }]
+      return [...prev, { ...producto, cantidad: producto.cantidad || 1 }]
     })
   }
 
