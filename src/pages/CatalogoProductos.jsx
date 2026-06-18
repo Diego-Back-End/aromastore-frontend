@@ -104,7 +104,7 @@ function CatalogoProductos() {
           <p>No se encontraron productos</p>
         </div>
       ) : (
-        <div className="productos-grid">
+        <div className="productos-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))' }}>
           {productosFiltrados.map((producto) => (
             <article key={producto.id} className="producto-card">
               <div className="producto-imagen-container">
