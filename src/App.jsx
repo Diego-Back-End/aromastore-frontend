@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
+import PrivateRoute from './components/PrivateRoute'
 import Login from './pages/Login'
 import Registro from './pages/Registro'
 import Catalogo from './pages/Catalogo'
@@ -15,20 +17,34 @@ import Terminos from './pages/Terminos'
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Catalogo />} />
-        <Route path="/catalogo-productos" element={<CatalogoProductos />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="/producto/:id" element={<DetalleProducto />} />
-        <Route path="/carrito" element={<Carrito />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/mis-pedidos" element={<MisPedidos />} />
-        <Route path="/notificaciones" element={<Notificaciones />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/terminos" element={<Terminos />} />
-      </Routes>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Catalogo />} />
+          <Route path="/catalogo-productos" element={<CatalogoProductos />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
+          <Route path="/producto/:id" element={<DetalleProducto />} />
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="/checkout" element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          } />
+          <Route path="/mis-pedidos" element={
+            <PrivateRoute>
+              <MisPedidos />
+            </PrivateRoute>
+          } />
+          <Route path="/notificaciones" element={<Notificaciones />} />
+          <Route path="/perfil" element={
+            <PrivateRoute>
+              <Perfil />
+            </PrivateRoute>
+          } />
+          <Route path="/terminos" element={<Terminos />} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   )
 }
