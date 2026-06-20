@@ -116,7 +116,7 @@ function CatalogoProductos() {
                   />
                 ) : (
                   <div className="producto-imagen-placeholder">
-                    <span className="placeholder-text">{producto.nombre}</span>
+                    <span className="placeholder-text" data-testid={`placeholder-${producto.nombre.toLowerCase().replace(/\s+/g, '-')}`}>{producto.nombre}</span>
                   </div>
                 )}
 
