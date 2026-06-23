@@ -35,7 +35,7 @@ function Carrito() {
                 <h3 style={{ color: '#ffffff', marginBottom: '0.25rem' }}>{item.nombre}</h3>
                 <p style={{ color: '#aaaaaa' }}>Cantidad: {item.cantidad}</p>
                 <p style={{ color: '#c9a84c', fontWeight: 'bold' }}>
-                  ${(item.precio * item.cantidad).toLocaleString()}
+                  ${Number(item.precio * item.cantidad).toLocaleString('es-CL')}
                 </p>
               </div>
               <button onClick={() => eliminarDelCarrito(item.id)} style={{ 
@@ -54,7 +54,7 @@ function Carrito() {
             border: '1px solid #c9a84c' 
           }}>
             <h2 style={{ color: '#ffffff', marginBottom: '1rem' }}>
-              Total: <span style={{ color: '#c9a84c' }}>${total.toLocaleString()}</span>
+              Total: <span style={{ color: '#c9a84c' }}>${Number(total).toLocaleString('es-CL')}</span>
             </h2>
             <button onClick={() => navigate('/checkout')} style={{ 
               width: '100%', padding: '0.75rem', backgroundColor: '#c9a84c', 

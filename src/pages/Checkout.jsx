@@ -27,22 +27,22 @@ function Checkout() {
     try {
       const usuarioId = localStorage.getItem('usuarioId') || 1
 
-      for (const item of items) {
-        const pedido = {
-          usuarioId: Number(usuarioId),
+      const pedido = {
+        usuarioId: Number(usuarioId),
+        items: items.map(item => ({
           productoId: item.id,
           cantidad: item.cantidad,
-          total: item.precio * item.cantidad
-        }
-
-        const response = await fetch('http://localhost:8080/api/pedidos', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(pedido)
-        })
-
-        if (!response.ok) throw new Error('Error al crear pedido')
+          precioUnitario: item.precio
+        }))
       }
+
+      const response = await fetch('http://localhost:8080/api/pedidos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(pedido)
+      })
+
+      if (!response.ok) throw new Error('Error al crear pedido')
 
       navigate('/mis-pedidos')
     } catch (err) {

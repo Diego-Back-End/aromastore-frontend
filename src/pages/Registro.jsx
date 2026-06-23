@@ -6,7 +6,6 @@ function Registro() {
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [rol, setRol] = useState('CLIENTE')
   const [aceptaTerminos, setAceptaTerminos] = useState(false)
   const navigate = useNavigate()
 
@@ -170,7 +169,7 @@ function Registro() {
         nombre: nombre,
         email: email,
         password: password,
-        rol: rol
+        rol: 'CLIENTE'
       }
       console.log('Registro:', formData)
       await register(formData)
@@ -220,22 +219,6 @@ function Registro() {
               <p style={{ color: '#ff4444', fontSize: '0.85rem', marginTop: '0.25rem' }}>{errors.nombre}</p>
             )}
           </div>
-
-          <select
-            value={rol}
-            onChange={e => setRol(e.target.value)}
-            style={{ 
-              padding: '0.75rem', 
-              borderRadius: '4px', 
-              border: '1px solid #1a1a2e', 
-              backgroundColor: '#1a1a2e', 
-              color: '#ffffff',
-              fontSize: '1rem'
-            }}
-          >
-            <option value="CLIENTE">CLIENTE</option>
-            <option value="ADMIN">ADMIN</option>
-          </select>
 
           <div>
             <input

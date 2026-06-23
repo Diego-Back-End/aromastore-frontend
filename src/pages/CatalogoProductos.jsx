@@ -52,9 +52,9 @@ function CatalogoProductos() {
 
   const obtenerPrecioConDescuento = (producto) => {
     if (producto.descuento > 0) {
-      return (producto.precio * (1 - producto.descuento / 100)).toFixed(2)
+      return Number(producto.precio * (1 - producto.descuento / 100)).toLocaleString('es-CL')
     }
-    return producto.precio.toFixed(2)
+    return Number(producto.precio).toLocaleString('es-CL')
   }
 
   const obtenerCategoriasUnicas = () => {
@@ -149,7 +149,7 @@ function CatalogoProductos() {
                   {producto.descuento > 0 ? (
                     <>
                       <span className="precio-original">
-                        ${producto.precio.toFixed(2)}
+                        ${Number(producto.precio).toLocaleString('es-CL')}
                       </span>
 
                       <span className="precio-descuento">
@@ -158,7 +158,7 @@ function CatalogoProductos() {
                     </>
                   ) : (
                     <span className="precio-actual">
-                      ${producto.precio.toFixed(2)}
+                      ${Number(producto.precio).toLocaleString('es-CL')}
                     </span>
                   )}
                 </div>

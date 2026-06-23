@@ -1,3 +1,4 @@
+import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { login } from '../services/usuariosService'
@@ -7,21 +8,20 @@ function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const { login: contextLogin } = useAuth()
 
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
       const response = await login({ email, password })
-      if (response.token) {
-        localStorage.setItem('token', response.token)
+      if (response.token && response.usuario) {
+        contextLogin(response.usuario, response.token, response.usuario.id)
+        if (response.usuario.rol === 'ADMIN') {
+          navigate('/admin/productos')
+        } else {
+          navigate('/perfil')
+        }
       }
-      if (response.usuario) {
-        localStorage.setItem('usuarioId', response.usuario.id)
-        localStorage.setItem('usuarioNombre', response.usuario.nombre)
-        localStorage.setItem('usuarioEmail', response.usuario.email)
-        localStorage.setItem('usuarioRol', response.usuario.rol)
-      }
-      navigate('/perfil')
     } catch (error) {
       setError('Credenciales incorrectas')
     }

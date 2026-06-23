@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 function Perfil() {
   const navigate = useNavigate()
+  const { usuario, logout } = useAuth()
   const [pedidos, setPedidos] = useState([])
   const [cargando, setCargando] = useState(true)
 
-  const nombre = localStorage.getItem('usuarioNombre') || 'Usuario'
-  const email = localStorage.getItem('usuarioEmail') || ''
-  const rol = localStorage.getItem('usuarioRol') || ''
-  const usuarioId = localStorage.getItem('usuarioId') || 1
+  const nombre = usuario?.nombre || 'Usuario'
+  const email = usuario?.email || ''
+  const rol = usuario?.rol || ''
+  const usuarioId = usuario?.id
 
   useEffect(() => {
+    if (!usuarioId) return
     const cargarPedidos = async () => {
       try {
         const response = await fetch(`http://localhost:8080/api/pedidos/usuario/${usuarioId}`)
@@ -24,10 +27,10 @@ function Perfil() {
       }
     }
     cargarPedidos()
-  }, [])
+  }, [usuarioId])
 
   const handleLogout = () => {
-    localStorage.clear()
+    logout()
     navigate('/login')
   }
 
@@ -77,7 +80,13 @@ function Perfil() {
                 </span>
               </div>
               <p style={{ color: '#aaaaaa' }}>Fecha: {new Date(p.fechaCreacion).toLocaleDateString('es-CL')}</p>
-              <p style={{ color: '#aaaaaa' }}>Cantidad: {p.cantidad}</p>
+              {p.items && p.items.map((item, idx) => (
+                <div key={idx} style={{ marginTop: '0.5rem' }}>
+                  <p style={{ color: '#aaaaaa' }}>Producto ID: {item.productoId}</p>
+                  <p style={{ color: '#aaaaaa' }}>Cantidad: {item.cantidad}</p>
+                  <p style={{ color: '#aaaaaa' }}>Precio Unitario: ${item.precioUnitario?.toLocaleString()}</p>
+                </div>
+              ))}
               <p style={{ color: '#c9a84c', fontWeight: 'bold' }}>Total: ${p.total.toLocaleString()}</p>
             </div>
           ))

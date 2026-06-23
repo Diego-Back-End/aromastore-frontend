@@ -51,12 +51,12 @@ function DetalleProducto() {
         padding: '2rem', maxWidth: '600px', margin: '0 auto',
         border: '1px solid #c9a84c' 
       }}>
-        <div style={{ height: '250px', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#0d0d0d', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+        <div style={{ height: '320px', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#0d0d0d', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
           {producto.imagen ? (
             <img 
               src={producto.imagen} 
               alt={producto.nombre}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '1rem' }}
             />
           ) : (
             <span style={{ color: '#c9a84c', fontSize: '1rem', fontWeight: 'bold', textAlign: 'center', padding: '1rem', wordBreak: 'break-word' }}>
@@ -70,7 +70,7 @@ function DetalleProducto() {
         </h1>
         <p style={{ color: '#aaaaaa', marginBottom: '1rem' }}>{producto.descripcion}</p>
         <p style={{ color: '#c9a84c', fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-          ${producto.precio}
+          ${Number(producto.precio).toLocaleString('es-CL')}
         </p>
         <p style={{ color: '#aaaaaa', marginBottom: '1rem' }}>
           Categoría: {producto.categoria}

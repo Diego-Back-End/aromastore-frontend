@@ -54,8 +54,13 @@ function MisPedidos() {
                   </span>
                 </div>
                 <p style={{ color: '#aaaaaa', marginTop: '0.5rem' }}>Fecha: {new Date(p.fechaCreacion).toLocaleDateString()}</p>
-                <p style={{ color: '#aaaaaa' }}>Producto ID: {p.productoId}</p>
-                <p style={{ color: '#aaaaaa' }}>Cantidad: {p.cantidad}</p>
+                {p.items && p.items.map((item, idx) => (
+                  <div key={idx} style={{ marginTop: '0.5rem' }}>
+                    <p style={{ color: '#aaaaaa' }}>Producto ID: {item.productoId}</p>
+                    <p style={{ color: '#aaaaaa' }}>Cantidad: {item.cantidad}</p>
+                    <p style={{ color: '#aaaaaa' }}>Precio Unitario: ${item.precioUnitario?.toLocaleString()}</p>
+                  </div>
+                ))}
                 <p style={{ color: '#c9a84c', fontWeight: 'bold', fontSize: '1.1rem', marginTop: '0.5rem' }}>Total: ${p.total.toLocaleString()}</p>
               </div>
             ))}

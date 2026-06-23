@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
+import AdminRoute from './components/AdminRoute'
 import Login from './pages/Login'
 import Registro from './pages/Registro'
 import Catalogo from './pages/Catalogo'
@@ -13,6 +14,8 @@ import MisPedidos from './pages/MisPedidos'
 import Notificaciones from './pages/Notificaciones'
 import Perfil from './pages/Perfil'
 import Terminos from './pages/Terminos'
+import Contacto from './pages/Contacto'
+import AdminProductos from './pages/AdminProductos'
 
 function App() {
   return (
@@ -42,7 +45,13 @@ function App() {
               <Perfil />
             </PrivateRoute>
           } />
+          <Route path="/admin/productos" element={
+            <AdminRoute>
+              <AdminProductos />
+            </AdminRoute>
+          } />
           <Route path="/terminos" element={<Terminos />} />
+          <Route path="/contacto" element={<Contacto />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

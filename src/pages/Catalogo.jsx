@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../styles/Catalogo.css'
-
+import CarruselPerfumes from '../components/CarruselPerfumes'
 function Catalogo() {
   const navigate = useNavigate()
 
@@ -31,6 +32,9 @@ function Catalogo() {
           </div>
         </div>
       </section>
+
+      {/* CARRUSEL DE PERFUMES */}
+      <CarruselPerfumes />
 
       {/* SOBRE NOSOTROS SECTION */}
       <section className="about-section">
@@ -65,9 +69,9 @@ function Catalogo() {
         <h3 className="footer-logo">AromaStore</h3>
         <p className="footer-slogan">Fragancias que definen tu esencia</p>
         <div className="footer-links">
-          <a href="/catalogo-productos" className="footer-link">Catálogo</a>
-          <a href="/contacto" className="footer-link">Contacto</a>
-          <a href="/terminos" className="footer-link">Términos y Condiciones</a>
+          <Link to="/catalogo-productos" className="footer-link">Catálogo</Link>
+          <Link to="/contacto" className="footer-link">Contacto</Link>
+          <Link to="/terminos" className="footer-link">Términos y Condiciones</Link>
         </div>
         <div className="footer-copyright">
           © 2026 AromaStore
