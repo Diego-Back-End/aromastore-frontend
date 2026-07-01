@@ -36,7 +36,7 @@ function Checkout() {
         }))
       }
 
-      const response = await fetch('http://localhost:8080/api/pedidos', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/pedidos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(pedido)
