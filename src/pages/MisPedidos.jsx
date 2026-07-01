@@ -10,7 +10,7 @@ function MisPedidos() {
     const cargar = async () => {
       try {
         const usuarioId = localStorage.getItem('usuarioId') || 1
-        const response = await fetch(`http://localhost:8080/api/pedidos/usuario/${usuarioId}`)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/pedidos/usuario/${usuarioId}`)
         const data = await response.json()
         setPedidos(data)
       } catch (error) {
